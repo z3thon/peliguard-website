@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
           unit_amount: unitAmount,
           ...(purchaseType === 'subscription' && {
             recurring: {
-              interval: 'month',
+              interval: 'month' as const,
             },
           }),
         },

@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 
-export default function AccountSetupPage() {
+function AccountSetupContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [email, setEmail] = useState(searchParams.get('email') || '');
@@ -298,5 +298,24 @@ export default function AccountSetupPage() {
 
       <Footer />
     </main>
+  );
+}
+
+export default function AccountSetupPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen">
+        <section className="hero-section">
+          <div className="hero-container">
+            <div className="hero-content">
+              <h1 className="hero-heading">Loading...</h1>
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    }>
+      <AccountSetupContent />
+    </Suspense>
   );
 }

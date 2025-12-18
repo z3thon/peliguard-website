@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 
-export default function CheckoutSuccessPage() {
+function CheckoutSuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
   const [loading, setLoading] = useState(true);
@@ -168,5 +168,24 @@ export default function CheckoutSuccessPage() {
 
       <Footer />
     </main>
+  );
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen">
+        <section className="hero-section">
+          <div className="hero-container">
+            <div className="hero-content">
+              <h1 className="hero-heading">Loading...</h1>
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    }>
+      <CheckoutSuccessContent />
+    </Suspense>
   );
 }

@@ -8,6 +8,13 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
+  if (!adminAuth || !adminFirestore) {
+    return NextResponse.json(
+      { error: 'Firebase Admin not initialized' },
+      { status: 500 }
+    );
+  }
+
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
 
@@ -52,12 +59,14 @@ export async function POST(request: NextRequest) {
         // Extract size quantities from metadata
         const sizeQuantities: Record<string, number> = {};
         const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-        sizes.forEach((size) => {
-          const qty = session.metadata[`size_${size}`];
-          if (qty) {
-            sizeQuantities[size] = parseInt(qty);
-          }
-        });
+        if (session.metadata) {
+          sizes.forEach((size) => {
+            const qty = session.metadata![`size_${size}`];
+            if (qty) {
+              sizeQuantities[size] = parseInt(qty);
+            }
+          });
+        }
         
         const totalQuantity = Object.values(sizeQuantities).reduce((sum, qty) => sum + qty, 0);
 
