@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { stripe } from '@/lib/stripe';
+import { getStripe } from '@/lib/stripe';
 
 // TODO: Replace with actual product prices from your Stripe products
 // For now, using placeholder pricing structure
@@ -93,6 +93,8 @@ export async function POST(request: NextRequest) {
     selectedSizes.forEach(([size, quantity]) => {
       metadata[`size_${size}`] = quantity.toString();
     });
+
+    const stripe = getStripe();
 
     if (purchaseType === 'subscription') {
       // Create subscription checkout session
