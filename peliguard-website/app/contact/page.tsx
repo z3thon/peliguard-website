@@ -1,0 +1,337 @@
+'use client';
+
+import Footer from '@/components/Footer';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+
+export default function Contact() {
+  const [activeTab, setActiveTab] = useState<'general' | 'wholesale'>('general');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subjectPrefix = activeTab === 'wholesale' ? '[Wholesale Inquiry] ' : '';
+    const bodyPrefix = activeTab === 'wholesale' ? 'Inquiry Type: Wholesale\n\n' : '';
+    window.location.href = `mailto:sales@peliguard.com?subject=${encodeURIComponent(subjectPrefix + formData.subject)}&body=${encodeURIComponent(`${bodyPrefix}Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  return (
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="hero-content"
+          >
+            <h1 className="hero-heading">
+              Contact <span style={{ fontWeight: 800 }}>Us</span>
+            </h1>
+            <p className="hero-subheading">
+              Get in touch with our team to discuss your protective equipment needs. 
+              We're here to help you protect your workforce.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Form & Information Section */}
+      <section className="features-section">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="section-header"
+          >
+            <h2 className="section-title">Send Us a Message</h2>
+            <p className="section-subtitle">Fill out the form below and we'll get back to you soon.</p>
+          </motion.div>
+
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            {/* Tabbed Interface */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="glass-form-container tabbed-container">
+                {/* Tab Navigation */}
+                <div className="tab-navigation">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('general')}
+                    className={`tab-button ${activeTab === 'general' ? 'tab-active' : ''}`}
+                  >
+                    General Inquiry
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('wholesale')}
+                    className={`tab-button ${activeTab === 'wholesale' ? 'tab-active' : ''}`}
+                  >
+                    Wholesale Inquiry
+                  </button>
+                </div>
+
+                {/* Tab Content */}
+                <div className="tab-content-wrapper">
+                  <AnimatePresence mode="wait">
+                    {activeTab === 'general' && (
+                      <motion.div
+                        key="general"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                        className="tab-content"
+                      >
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                          <div>
+                            <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Name
+                            </label>
+                            <input
+                              type="text"
+                              id="name"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleChange}
+                              className="glass-input w-full px-4 rounded-full text-gray-900 placeholder-gray-500 font-medium"
+                              placeholder="Your name"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Email
+                            </label>
+                            <input
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              className="glass-input w-full px-4 rounded-full text-gray-900 placeholder-gray-500 font-medium"
+                              placeholder="your.email@example.com"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="subject" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Subject
+                            </label>
+                            <input
+                              type="text"
+                              id="subject"
+                              name="subject"
+                              value={formData.subject}
+                              onChange={handleChange}
+                              className="glass-input w-full px-4 rounded-full text-gray-900 placeholder-gray-500 font-medium"
+                              placeholder="What is this regarding?"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Message
+                            </label>
+                            <textarea
+                              id="message"
+                              name="message"
+                              value={formData.message}
+                              onChange={handleChange}
+                              rows={5}
+                              className="glass-input w-full px-4 rounded-[2rem] text-gray-900 placeholder-gray-500 font-medium resize-none"
+                              placeholder="Your message..."
+                              required
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            className="cta-button w-full"
+                          >
+                            Send Message
+                          </button>
+                        </form>
+                      </motion.div>
+                    )}
+
+                    {activeTab === 'wholesale' && (
+                      <motion.div
+                        key="wholesale"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                        className="tab-content"
+                      >
+                        {/* Why Partner Section */}
+                        <div style={{ marginBottom: '2rem' }}>
+                          <h3 className="contact-info-title" style={{ marginBottom: '1.5rem', fontSize: '1rem' }}>
+                            Why Partner With Peliguard?
+                          </h3>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', marginTop: '1.5rem' }}>
+                            <div>
+                              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>📦</div>
+                              <h4 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '1rem', color: '#111827' }}>
+                                Reliable Supply Chain
+                              </h4>
+                              <p style={{ fontSize: '0.875rem', color: '#6b7280', lineHeight: 1.6 }}>
+                                Consistent, on-time delivery with no supply disruptions
+                              </p>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>✅</div>
+                              <h4 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '1rem', color: '#111827' }}>
+                                Quality Control
+                              </h4>
+                              <p style={{ fontSize: '0.875rem', color: '#6b7280', lineHeight: 1.6 }}>
+                                Proprietary quality control ensures highest standards
+                              </p>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>🇺🇸</div>
+                              <h4 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '1rem', color: '#111827' }}>
+                                Made in USA
+                              </h4>
+                              <p style={{ fontSize: '0.875rem', color: '#6b7280', lineHeight: 1.6 }}>
+                                All products assembled in Independence, Louisiana
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Contact Form */}
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                          <div>
+                            <label htmlFor="name-wholesale" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Name
+                            </label>
+                            <input
+                              type="text"
+                              id="name-wholesale"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleChange}
+                              className="glass-input w-full px-4 rounded-full text-gray-900 placeholder-gray-500 font-medium"
+                              placeholder="Your name"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="email-wholesale" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Email
+                            </label>
+                            <input
+                              type="email"
+                              id="email-wholesale"
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              className="glass-input w-full px-4 rounded-full text-gray-900 placeholder-gray-500 font-medium"
+                              placeholder="your.email@example.com"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="subject-wholesale" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Subject
+                            </label>
+                            <input
+                              type="text"
+                              id="subject-wholesale"
+                              name="subject"
+                              value={formData.subject}
+                              onChange={handleChange}
+                              className="glass-input w-full px-4 rounded-full text-gray-900 placeholder-gray-500 font-medium"
+                              placeholder="What is this regarding?"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="message-wholesale" className="block text-sm font-semibold text-gray-900 mb-2">
+                              Message
+                            </label>
+                            <textarea
+                              id="message-wholesale"
+                              name="message"
+                              value={formData.message}
+                              onChange={handleChange}
+                              rows={5}
+                              className="glass-input w-full px-4 rounded-[2rem] text-gray-900 placeholder-gray-500 font-medium resize-none"
+                              placeholder="Tell us about your wholesale needs..."
+                              required
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            className="cta-button w-full"
+                          >
+                            Send Wholesale Inquiry
+                          </button>
+                        </form>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Contact Information Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ marginTop: '2rem' }}
+            >
+              <div className="glass-form-container">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                  <div>
+                    <h3 className="contact-info-title">Email</h3>
+                    <a 
+                      href="mailto:sales@peliguard.com" 
+                      className="contact-info-link"
+                    >
+                      sales@peliguard.com
+                    </a>
+                  </div>
+                  <div style={{ paddingTop: '1.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                    <h3 className="contact-info-title">Location</h3>
+                    <div className="contact-info-address">
+                      <p>51237 Mushroom Lane</p>
+                      <p>Independence, LA 70443</p>
+                    </div>
+                  </div>
+                  <div style={{ paddingTop: '1.5rem', borderTop: '1px solid rgba(0, 0, 0, 0.08)' }}>
+                    <h3 className="contact-info-title">Visit Us</h3>
+                    <p className="contact-info-description">
+                      Feel free to stop by our facility in Independence, Louisiana if you're in the neighborhood. 
+                      We welcome visitors.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
