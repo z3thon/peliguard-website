@@ -308,76 +308,84 @@ export default function CheckoutPage() {
 
                     {/* Size Quantity Selectors */}
                     <div style={{ marginBottom: '2rem' }}>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                        {ALL_SIZES.map((size) => (
-                          <div
-                            key={size}
-                            className="glass-card"
-                            style={{
-                              padding: '1.5rem',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              gap: '1.5rem',
-                            }}
-                          >
-                            <div style={{ minWidth: '120px', flexShrink: 0 }}>
-                              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827' }}>
-                                {size}
-                                {checkoutData.sizeQuantities[size] > 0 && (
-                                  <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#6b7280', marginLeft: '0.5rem' }}>
-                                    ({checkoutData.sizeQuantities[size]} carton{checkoutData.sizeQuantities[size] !== 1 ? 's' : ''})
-                                  </span>
-                                )}
-                              </span>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        {ALL_SIZES.map((size, index) => (
+                          <div key={size}>
+                            <div
+                              style={{
+                                padding: '1.5rem 0',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: '1rem',
+                              }}
+                            >
+                              <div style={{ minWidth: '80px', flexShrink: 0 }}>
+                                <span style={{ fontSize: '1.125rem', fontWeight: 700, color: '#111827' }}>
+                                  {size}
+                                  {checkoutData.sizeQuantities[size] > 0 && (
+                                    <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#6b7280', marginLeft: '0.5rem' }}>
+                                      ({checkoutData.sizeQuantities[size]} carton{checkoutData.sizeQuantities[size] !== 1 ? 's' : ''})
+                                    </span>
+                                  )}
+                                </span>
+                              </div>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, justifyContent: 'flex-end' }}>
+                                <button
+                                  onClick={() =>
+                                    handleSizeQuantityChange(
+                                      size,
+                                      checkoutData.sizeQuantities[size] - 1
+                                    )
+                                  }
+                                  className="quantity-button"
+                                  disabled={checkoutData.sizeQuantities[size] === 0}
+                                  style={{
+                                    opacity: checkoutData.sizeQuantities[size] === 0 ? 0.5 : 1,
+                                    cursor: checkoutData.sizeQuantities[size] === 0 ? 'not-allowed' : 'pointer',
+                                  }}
+                                >
+                                  −
+                                </button>
+                                <input
+                                  type="number"
+                                  min="0"
+                                  value={checkoutData.sizeQuantities[size]}
+                                  onChange={(e) =>
+                                    handleSizeQuantityChange(
+                                      size,
+                                      parseInt(e.target.value) || 0
+                                    )
+                                  }
+                                  className="glass-input rounded-full"
+                                  style={{
+                                    textAlign: 'center',
+                                    fontWeight: 700,
+                                    width: '70px',
+                                  }}
+                                />
+                                <button
+                                  onClick={() =>
+                                    handleSizeQuantityChange(
+                                      size,
+                                      checkoutData.sizeQuantities[size] + 1
+                                    )
+                                  }
+                                  className="quantity-button"
+                                >
+                                  +
+                                </button>
+                              </div>
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, maxWidth: '200px', justifyContent: 'flex-end' }}>
-                              <button
-                                onClick={() =>
-                                  handleSizeQuantityChange(
-                                    size,
-                                    checkoutData.sizeQuantities[size] - 1
-                                  )
-                                }
-                                className="quantity-button"
-                                disabled={checkoutData.sizeQuantities[size] === 0}
+                            {index < ALL_SIZES.length - 1 && (
+                              <div
                                 style={{
-                                  opacity: checkoutData.sizeQuantities[size] === 0 ? 0.5 : 1,
-                                  cursor: checkoutData.sizeQuantities[size] === 0 ? 'not-allowed' : 'pointer',
-                                }}
-                              >
-                                −
-                              </button>
-                              <input
-                                type="number"
-                                min="0"
-                                value={checkoutData.sizeQuantities[size]}
-                                onChange={(e) =>
-                                  handleSizeQuantityChange(
-                                    size,
-                                    parseInt(e.target.value) || 0
-                                  )
-                                }
-                                className="glass-input rounded-full"
-                                style={{
-                                  flex: 1,
-                                  textAlign: 'center',
-                                  fontWeight: 700,
-                                  width: '80px',
+                                  height: '1px',
+                                  background: 'rgba(0, 0, 0, 0.15)',
+                                  margin: '0',
                                 }}
                               />
-                              <button
-                                onClick={() =>
-                                  handleSizeQuantityChange(
-                                    size,
-                                    checkoutData.sizeQuantities[size] + 1
-                                  )
-                                }
-                                className="quantity-button"
-                              >
-                                +
-                              </button>
-                            </div>
+                            )}
                           </div>
                         ))}
                       </div>
