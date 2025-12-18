@@ -375,12 +375,12 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="benefit-card"
             >
-              <div className="benefit-image" style={{ position: 'relative', width: '100%', height: '200px', marginBottom: '1rem' }}>
+              <div className="benefit-image" style={{ position: 'relative', width: '100%', height: '200px', marginBottom: '1rem', borderRadius: '1.5rem', overflow: 'hidden' }}>
                 <Image
                   src="https://images.squarespace-cdn.com/content/v1/637f783c6a76884fff870b73/cc4c7fb0-47d1-4314-b3c7-1b4d9cf9cc3a/Capture.JPG"
                   alt="Peliguard facility in Independence, Louisiana"
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                   unoptimized
                 />
               </div>

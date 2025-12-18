@@ -86,6 +86,10 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Desktop CTA Button */}
+            <Link href="/checkout" className="navbar-cta-button">
+              Order Now
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -180,6 +184,23 @@ export default function Navbar() {
                 </motion.div>
               );
             })}
+            {/* Mobile CTA Button */}
+            <motion.div
+              animate={{ opacity: isOpen ? 1 : 0 }}
+              transition={{ 
+                duration: 0.2,
+                delay: isOpen ? navLinks.length * 0.03 : 0,
+                ease: [0.4, 0, 0.2, 1]
+              }}
+            >
+              <Link
+                href="/checkout"
+                onClick={() => setIsOpen(false)}
+                className="navbar-mobile-cta-button"
+              >
+                Order Now
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </motion.nav>
