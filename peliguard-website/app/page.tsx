@@ -3,11 +3,48 @@
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Images showing people wearing nitrile and vinyl gloves
+  // TODO: Replace these placeholder URLs with actual images from stock photo sites
+  // Recommended sites: Unsplash, Pexels, Pixabay, Rawpixel
+  // Search terms: "nitrile gloves medical", "nitrile gloves food service", 
+  // "vinyl gloves food service", "disposable gloves medical", "blue nitrile gloves"
+  const productImages = [
+    {
+      src: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80',
+      alt: 'Medical professional wearing nitrile gloves',
+      caption: 'Medical professionals trust Peliguard nitrile gloves'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&q=80',
+      alt: 'Food service worker wearing gloves',
+      caption: 'Food service workers rely on Peliguard vinyl gloves'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&q=80',
+      alt: 'Healthcare worker wearing protective gloves',
+      caption: 'Quality protection for healthcare professionals'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1556910096-6f5e72db6803?w=1200&q=80',
+      alt: 'Chef wearing gloves preparing food',
+      caption: 'FDA-approved gloves for food handling'
+    }
+  ];
+
+  // Auto-rotate slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 4);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <main className="min-h-screen">
       {/* Hero / Main Fold Section */}
@@ -46,14 +83,44 @@ export default function Home() {
               </Link>
             </div>
             
-            {/* Demo Video Placeholder */}
-            <div className="hero-video-container">
-              <div className="hero-video-placeholder">
-                <svg className="hero-video-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <p className="hero-video-text">Watch our 2-minute product overview</p>
+            {/* Product Images Carousel */}
+            <div className="hero-carousel-container">
+              <div className="hero-carousel-wrapper">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="hero-carousel-slide"
+                  >
+                    <div className="hero-carousel-image-wrapper">
+                      <Image
+                        src={productImages[currentSlide].src}
+                        alt={productImages[currentSlide].alt}
+                        fill
+                        className="hero-carousel-image"
+                        priority={currentSlide === 0}
+                        unoptimized
+                      />
+                      <div className="hero-carousel-overlay" />
+                    </div>
+                    <p className="hero-carousel-caption">{productImages[currentSlide].caption}</p>
+                  </motion.div>
+                </AnimatePresence>
+                
+                {/* Carousel Navigation Dots */}
+                <div className="hero-carousel-dots">
+                  {productImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`hero-carousel-dot ${index === currentSlide ? 'active' : ''}`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -64,6 +131,94 @@ export default function Home() {
               <div className="hero-logo-item">Made in USA</div>
               <div className="hero-logo-item">FDA Approved</div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Client Logos Section */}
+      <section className="clients-section">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="section-header"
+          >
+            <h2 className="section-title">Trusted by Industry Leaders</h2>
+            <p className="section-subtitle">Peliguard protects workers across healthcare, food service, and manufacturing industries</p>
+          </motion.div>
+          
+          <div className="clients-grid">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="client-category"
+            >
+              <h3 className="client-category-title">Healthcare</h3>
+              <div className="client-logos-row">
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Hospitals</span>
+                </div>
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Clinics</span>
+                </div>
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Medical Centers</span>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="client-category"
+            >
+              <h3 className="client-category-title">Food Service</h3>
+              <div className="client-logos-row">
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Restaurants</span>
+                </div>
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Food Processing</span>
+                </div>
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Catering Services</span>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="client-category"
+            >
+              <h3 className="client-category-title">Manufacturing</h3>
+              <div className="client-logos-row">
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Industrial</span>
+                </div>
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Distribution</span>
+                </div>
+                <div className="client-logo-placeholder">
+                  <span className="client-logo-text">Wholesale</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="clients-note"
+          >
+            <p className="clients-note-text">
+              <strong>Note:</strong> Add your actual client logos here. Contact us to learn more about becoming a Peliguard partner.
+            </p>
           </motion.div>
         </div>
       </section>
