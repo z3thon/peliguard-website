@@ -1,0 +1,22 @@
+2025-11-16 00:29:52,426 - INFO - Selenium WebDriver initialized successfully
+2025-11-16 00:29:52,426 - INFO - Using Selenium for JavaScript-rendered content
+2025-11-16 00:29:52,426 - INFO - Starting scrape of https://www.peliguard.com
+2025-11-16 00:29:52,426 - INFO - Fetching with Selenium: https://www.peliguard.com
+2025-11-16 00:30:09,355 - INFO - Saved page: index.html
+2025-11-16 00:30:09,425 - INFO - Progress: 1 pages scraped, 4 in queue, 0 assets downloaded
+2025-11-16 00:30:09,425 - INFO - Fetching with Selenium: https://www.peliguard.com/our-story
+2025-11-16 00:30:18,709 - INFO - Saved page: our-story.html
+2025-11-16 00:30:18,770 - INFO - Progress: 2 pages scraped, 3 in queue, 0 assets downloaded
+2025-11-16 00:30:18,770 - INFO - Fetching with Selenium: https://www.peliguard.com/cart
+2025-11-16 00:30:30,033 - INFO - Saved page: cart.html
+2025-11-16 00:30:30,104 - INFO - Progress: 3 pages scraped, 2 in queue, 0 assets downloaded
+2025-11-16 00:30:30,104 - INFO - Fetching with Selenium: https://www.peliguard.com/privacy-policy
+2025-11-16 00:30:39,010 - INFO - Saved page: privacy-policy.html
+2025-11-16 00:30:39,079 - INFO - Progress: 4 pages scraped, 1 in queue, 0 assets downloaded
+2025-11-16 00:30:39,079 - INFO - Fetching with Selenium: https://www.peliguard.com/wholesale
+2025-11-16 00:31:03,130 - INFO - Saved page: wholesale.html
+2025-11-16 00:31:03,196 - INFO - Progress: 5 pages scraped, 0 in queue, 0 assets downloaded
+2025-11-16 00:31:03,197 - INFO - Summary saved to scraped_content/scraping_summary.json
+2025-11-16 00:31:03,197 - INFO - Scraping complete! Scraped 5 pages
+2025-11-16 00:31:03,197 - INFO - Failed: 0 pages
+2025-11-16 00:31:03,197 - INFO - Downloaded 0 assets

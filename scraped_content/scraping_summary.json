@@ -1,0 +1,102 @@
+{
+  "base_url": "https://www.peliguard.com",
+  "scraped_at": "2025-11-16T00:31:03.196296",
+  "total_pages": 5,
+  "failed_pages": 0,
+  "total_assets": 0,
+  "pages": [
+    {
+      "url": "https://www.peliguard.com",
+      "filename": "index.html",
+      "title": "Peliguard",
+      "description": "",
+      "text_content": "Peliguard\n0\nSkip to Content\nHome\nOur Story\nWholesale\nOpen Menu\nClose Menu\nOpen Menu\nClose Menu\nHome\nOur Story\nWholesale\nHome\nOur Story\nWholesale\nAmerican Quality, American Assembly\nWe assemble our products in Independence, Louisiana\nKeep in Touch\nSign up with your email address to receive news and updates.\nSubscribe\nPeliguard\n51237 Mushroom Lane\nIndependence, LA 70443\nsales@peliguard.com\nMade with\nSquarespace\n© Peliguard 2022\nPrivacy Policy\nWebmaster Information",
+      "structured_data": [
+        {
+          "url": "https://www.peliguard.com",
+          "name": "Peliguard",
+          "image": "//images.squarespace-cdn.com/content/v1/637f783c6a76884fff870b73/035599f5-c8b9-45ac-8f0d-37519415b5ba/Peliguard-Icon-Color.png",
+          "@context": "http://schema.org",
+          "@type": "WebSite"
+        }
+      ],
+      "scraped_at": "2025-11-16T00:30:09.354988"
+    },
+    {
+      "url": "https://www.peliguard.com/our-story",
+      "filename": "our-story.html",
+      "title": "Our Story — Peliguard",
+      "description": "",
+      "text_content": "Our Story — Peliguard\n0\nSkip to Content\nHome\nOur Story\nWholesale\nOpen Menu\nClose Menu\nOpen Menu\nClose Menu\nHome\nOur Story\nWholesale\nHome\nOur Story\nWholesale\nOur Story\nAt Peliguard, our focus is protecting the American workforce. Our customers are our neighbors, and we treat every product that we produce with care knowing that it is the first line of defense. Our employees take great pains to ensure that our focus and care translates directly into the quality of our products.\nPeliguard proudly assembles a full line of disposable protective equipment at our plant in Independence, Louisiana. Feel free to stop by if you are in the neighborhood.\nOur Focus\nPeliguard is focused on addressing the lack of transparency, reliability and accountability in the current supply chain of Personal Protective Equipment.\nWe accomplish this by bringing the supply of those goods back to the US. Our proprietary quality control measures and supply chain management processes allow for reliable delivery of prod",
+      "structured_data": [
+        {
+          "url": "https://www.peliguard.com",
+          "name": "Peliguard",
+          "image": "//images.squarespace-cdn.com/content/v1/637f783c6a76884fff870b73/035599f5-c8b9-45ac-8f0d-37519415b5ba/Peliguard-Icon-Color.png",
+          "@context": "http://schema.org",
+          "@type": "WebSite"
+        }
+      ],
+      "scraped_at": "2025-11-16T00:30:18.709638"
+    },
+    {
+      "url": "https://www.peliguard.com/cart",
+      "filename": "cart.html",
+      "title": "Peliguard",
+      "description": "",
+      "text_content": "Peliguard\n0\nSkip to Content\nHome\nOur Story\nWholesale\nOpen Menu\nClose Menu\nOpen Menu\nClose Menu\nHome\nOur Story\nWholesale\nHome\nOur Story\nWholesale\nShopping Cart\nYou have nothing in your shopping cart.\nContinue Shopping\nPeliguard\n51237 Mushroom Lane\nIndependence, LA 70443\nsales@peliguard.com\nMade with\nSquarespace\n© Peliguard 2022\nPrivacy Policy\nWebmaster Information",
+      "structured_data": [
+        {
+          "url": "https://www.peliguard.com",
+          "name": "Peliguard",
+          "image": "//images.squarespace-cdn.com/content/v1/637f783c6a76884fff870b73/035599f5-c8b9-45ac-8f0d-37519415b5ba/Peliguard-Icon-Color.png",
+          "@context": "http://schema.org",
+          "@type": "WebSite"
+        }
+      ],
+      "scraped_at": "2025-11-16T00:30:30.032981"
+    },
+    {
+      "url": "https://www.peliguard.com/privacy-policy",
+      "filename": "privacy-policy.html",
+      "title": "Privacy Policy — Peliguard",
+      "description": "",
+      "text_content": "Privacy Policy — Peliguard\n0\nSkip to Content\nHome\nOur Story\nWholesale\nOpen Menu\nClose Menu\nOpen Menu\nClose Menu\nHome\nOur Story\nWholesale\nHome\nOur Story\nWholesale\nPrivacy Policy\nThis Privacy Policy governs the processing of your personal data by the Yeti Industries group of companies (referred to as: “Yeti”, “Peliguard” “we”, “us”, “our”) captured through the following methods:\nWhen you visit our global and local websites (the “Website”);\nWhen you communicate with us via e-mail, telephone, fax and/or social media channels; and/or\nThrough other online and offline channels.\nIf you want more information on how we process personal data via cookies, social plugins and other types of tracking technology, please refer to our Cookie Policy.\nIN GENERAL\nYou can contact us via e-mail at\nprivacy@peliguard.com\n.\nA reference in this Privacy Policy to certain laws or regulations also includes any change, replacement or annulment of these laws or regulations, including any related executive decisions.\n",
+      "structured_data": [
+        {
+          "url": "https://www.peliguard.com",
+          "name": "Peliguard",
+          "image": "//images.squarespace-cdn.com/content/v1/637f783c6a76884fff870b73/035599f5-c8b9-45ac-8f0d-37519415b5ba/Peliguard-Icon-Color.png",
+          "@context": "http://schema.org",
+          "@type": "WebSite"
+        }
+      ],
+      "scraped_at": "2025-11-16T00:30:39.010617"
+    },
+    {
+      "url": "https://www.peliguard.com/wholesale",
+      "filename": "wholesale.html",
+      "title": "Wholesale — Peliguard",
+      "description": "",
+      "text_content": "Wholesale — Peliguard\n0\nSkip to Content\nHome\nOur Story\nWholesale\nOpen Menu\nClose Menu\nOpen Menu\nClose Menu\nHome\nOur Story\nWholesale\nHome\nOur Story\nWholesale\nPeliguard\n51237 Mushroom Lane\nIndependence, LA 70443\nsales@peliguard.com\nMade with\nSquarespace\n© Peliguard 2022\nPrivacy Policy\nWebmaster Information",
+      "structured_data": [
+        {
+          "url": "https://www.peliguard.com",
+          "name": "Peliguard",
+          "image": "//images.squarespace-cdn.com/content/v1/637f783c6a76884fff870b73/035599f5-c8b9-45ac-8f0d-37519415b5ba/Peliguard-Icon-Color.png",
+          "@context": "http://schema.org",
+          "@type": "WebSite"
+        }
+      ],
+      "scraped_at": "2025-11-16T00:31:03.130457"
+    }
+  ],
+  "visited_urls": [
+    "https://www.peliguard.com/privacy-policy",
+    "https://www.peliguard.com/wholesale",
+    "https://www.peliguard.com/our-story",
+    "https://www.peliguard.com/cart",
+    "https://www.peliguard.com"
+  ],
+  "failed_urls": []
+}
